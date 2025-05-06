@@ -1,54 +1,74 @@
-# React + TypeScript + Vite
+# 🧠 AI Chat Replayer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**AI Chat Replayer** is a web-based application that visually replays AI-generated conversations like a tutorial or walkthrough. It enables users to explore curated educational dialogues—such as lessons in prompt engineering—one message at a time, with playback controls and a sidebar for easy navigation.
 
-Currently, two official plugins are available:
+## 🚀 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+* 🎮 **Playback Controls** — Play, pause, skip, rewind, or restart conversations.
+* 🗂 **Conversation Sidebar** — Browse and jump to multiple preloaded tutorials.
+* 💬 **Animated Message Display** — Messages appear with smooth transitions and markdown support.
+* 📜 **Markdown Rendering** — Supports rich text, including code blocks, via [Marked.js](https://marked.js.org/).
+* 🧹 **Modular Codebase** — Built with reusable, ES6 class-based components.
 
-## Expanding the ESLint configuration
+## 🏗️ Tech Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+* **Frontend:** Vanilla JavaScript (ES Modules), HTML5, CSS3
+* **Markdown Rendering:** [Marked.js](https://github.com/markedjs/marked)
+* **Structure:** Modular component pattern with `ChatView`, `ControlsView`, `SidebarView`, etc.
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## 📁 Project Structure
+
+```
+/js
+  ├── ChatReplayerApp.js           # Main app controller
+  ├── data/data.js                 # Preloaded conversation data
+  └── components/
+        ├── ChatView.js             # UI rendering for chat messages
+        ├── ControlsView.js         # Playback button logic
+        ├── SidebarView.js          # Sidebar and conversation list
+        ├── PlaybackEngine.js       # Controls message sequencing & state
+        └── ConversationManager.js  # Manages current conversation
+/helpers
+  └── utils.js                     # Markdown config and HTML escaping
+/index.html                        # Main entry point
+/style.css                         # Custom styling
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🥚 Example Conversations
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Preloaded lessons include:
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+1. **Intro to Prompt Engineering**
+2. **Basic Prompting Techniques**
+3. **Using Code in Prompts**
+4. **Few-Shot Prompting**
+5. **Role Playing with AI**
+
+Each conversation is structured as a sequence of `user` and `assistant` messages rendered in real-time.
+
+## 🛠️ How to Run
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/your-username/chat-replayer.git
+   cd chat-replayer
+   ```
+
+2. Open `index.html` in your browser (no build steps required).
+
+> ✅ No external server needed — it's a 100% frontend-only project.
+
+## 📦 To-Do / Future Enhancements
+
+* 🔍 Add search or filter for conversations
+* 📂 Support user-created conversation uploads
+* 🧠 Integrate with a live LLM API for dynamic replays
+
+## 📄 License
+
+MIT License — feel free to use, modify, and share.
+
+---
+
+Made with ❤️ to teach others about effective AI usage and prompting.
