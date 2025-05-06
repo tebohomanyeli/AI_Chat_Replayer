@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>AI Chat Replayer</title>
+
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+</head>
+<body>
+  <div id="chat-replayer-app">
+    <h1 id="conversation-title"></h1>
+
+    <aside id="chat-sidebar" class="closed"> <button id="sidebar-toggle" aria-label="Toggle tutorials">☰</button>
+      <h2>Your Tutorials</h2>
+      <ul id="conversation-list">
+        </ul>
+    </aside>
+
+    <main id="main-content"> <div id="chat-container">
+        </div>
+
+      <div id="controls">
+        <button id="prev-btn"   title="Previous">&lt; Prev</button>
+        <button id="play-btn"   title="Autoplay">Play ▶</button>
+        <button id="pause-btn"  title="Pause" style="display: none;">Pause ⏸</button> <button id="next-btn"   title="Next">Next &gt;</button>
+        <button id="repeat-btn" title="Restart">Repeat ↺</button>
+      </div>
+    </main> </div> <script type="module" src="js/ChatReplayerApp.js"></script>
+
+  </body>
+</html>

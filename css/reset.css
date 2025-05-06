@@ -1,0 +1,28 @@
+/* Box‐model & spacing reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Basic HTML/body reset */
+html {
+  height: 100%;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+body {
+  min-height: 100%;
+  overflow-x: hidden;   /* avoid horizontal scroll from sidebar peek */
+}
+
+/* Make form elements inherit font */
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}

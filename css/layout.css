@@ -1,0 +1,141 @@
+/* === Layout: structural containers & responsive positioning === */
+:root {
+    /* bump this up to control your closed‑state peek */
+    --sidebar-peek-width: 70px;
+  }
+  
+  /* Sidebar container & toggle space */
+  #chat-sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 250px;
+    height: 100%;
+    background: var(--container-bg);
+    border-right: 1px solid var(--border-color);
+    transition: transform 0.3s ease;
+    transform: translateX(calc(-100% + var(--sidebar-peek-width)));
+    z-index: 1000;
+    box-shadow: 2px 0 8px rgba(0,0,0,0.5);
+    padding: 1rem;
+    overflow: visible;  /* so toggle button remains clickable */
+  }
+  #chat-sidebar.closed {
+    transform: translateX(calc(-100% + var(--sidebar-peek-width)));
+  }
+  #chat-sidebar.open {
+    transform: translateX(0);
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+  #chat-sidebar h2 {
+    margin-top: calc(var(--sidebar-top-margin) + var(--sidebar-button-height));
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 0.5rem;
+    font-weight: 400;
+  }
+  /* Hide conversation list and header when sidebar is closed */
+  #chat-sidebar.closed h2,
+  #chat-sidebar.closed #conversation-list {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.1s ease;
+  }
+  /* Show them again when sidebar is open */
+  #chat-sidebar.open h2,
+  #chat-sidebar.open #conversation-list {
+    opacity: 1;
+    pointer-events: auto;
+    transition: opacity 0.2s ease 0.1s;
+  }
+  
+  /* App Container spans from sidebar to right edge, with header and footer pinned */
+  #chat-replayer-app {
+    position: absolute;
+    top: 20px;
+    bottom: 20px;
+    left: calc(var(--sidebar-peek-width) + 20px);
+    right: 20px;
+    padding: 0;               /* handle inner padding in children */
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Shift when sidebar is open */
+  body.sidebar-open #chat-replayer-app {
+    left: calc(250px + 20px);
+  }
+  
+  /* Conversation title at top */
+  #conversation-title {
+    flex: 0 0 auto;
+    text-align: center;
+    margin: 0 0 15px;
+  }
+  
+  /* Main content holds chat-container and controls, stacked */
+  #main-content {
+    flex: 1 1 auto;           /* fill remaining height */
+    display: flex;
+    flex-direction: column;
+    align-items: center;      /* center chat box horizontally */
+    justify-content: space-between; /* chat-container at top, controls at bottom */
+    row-gap: 0px;
+  }
+  
+  /* Chat message viewport: scrollable middle section */
+  #chat-container {
+    flex: 1 1 auto;    /* take all the space between header & controls */
+    width: 60%;        /* or max-width: 1000px */
+    max-width: 1000px;
+    overflow-y: auto;  /* scroll when messages overflow */
+    padding: 15px;
+    padding-bottom: 80px; /* reserve space for sticky controls */
+    box-sizing: border-box;
+    background: var(--bg-color);
+  }
+  
+  #chat-container::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  
+  /* Controls pinned at the bottom */
+  #controls {
+    position: sticky;
+    bottom: 0;
+    flex: 0 0 auto;    /* don’t grow or shrink */
+    width: 60%;        /* same as #chat-container */
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding: 15px 0;   /* breathing room */
+    box-sizing: border-box;
+    border-top: 10px solid var(--border-color);
+    background: var(--bg-color);
+    z-index: 10;       /* sit above chat messages */
+  }
+  
+  /* Responsive layout tweaks */
+  @media (max-width: 600px) {
+    #chat-replayer-app {
+      top: 10px;
+      bottom: 10px;
+      left: calc(var(--sidebar-peek-width) + 10px);
+      right: 10px;
+    }
+    body.sidebar-open #chat-replayer-app {
+      left: calc(220px + 10px);
+    }
+    #chat-sidebar {
+      width: 220px;
+    }
+    #controls {
+      width: calc(100% - var(--sidebar-peek-width) - 20px);
+      left: calc(var(--sidebar-peek-width) + 10px);
+    }
+  }
+  
