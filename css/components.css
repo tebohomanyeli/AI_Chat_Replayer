@@ -6,10 +6,10 @@ h1 {
     margin-bottom: 15px;
     color: var(--primary-color);
     font-weight: 300;
-  }
+}
   
-  /* Sidebar toggle button */
-  #sidebar-toggle {
+/* Sidebar toggle button */
+#sidebar-toggle {
     position: absolute;
     top: var(--sidebar-top-margin);
     right: 1rem;
@@ -26,17 +26,17 @@ h1 {
     justify-content: center;
     z-index: 1001;
     transition: background-color 0.2s ease;
-  }
-  #sidebar-toggle:hover {
+}
+#sidebar-toggle:hover {
     background: var(--button-hover-bg);
-  }
+}
   
-  /* Conversation list */
-  #conversation-list {
+/* Conversation list */
+#conversation-list {
     list-style: none;
     padding: 0;
-  }
-  #conversation-list li {
+}
+#conversation-list li {
     padding: 10px 8px;
     margin-bottom: 5px;
     background: var(--bg-color);
@@ -47,18 +47,18 @@ h1 {
     overflow: hidden;
     text-overflow: ellipsis;
     transition: background-color 0.2s ease;
-  }
-  #conversation-list li:hover {
+}
+#conversation-list li:hover {
     background: var(--button-hover-bg);
-  }
-  #conversation-list li.active {
+}
+#conversation-list li.active {
     background: var(--primary-color);
     color: #fff;
     font-weight: 500;
-  }
+}
   
-  /* Chat bubbles & animation */
-  .message {
+/* Chat bubbles & animation */
+.message {
     max-width: 85%;
     padding: 10px 15px;
     margin-bottom: 12px;
@@ -68,37 +68,50 @@ h1 {
     animation: fadeIn 0.5s ease-out forwards;
     clear: both;
     float: left;
-  }
-  @keyframes fadeIn {
+}
+@keyframes fadeIn {
     from { opacity: 0; transform: translateY(10px); }
     to   { opacity: 1; transform: translateY(0); }
-  }
-  .message.user {
+}
+.message.user {
     background: var(--user-bubble-bg);
     float: right;
     border-bottom-right-radius: 3px;
     color: #e0f2ff;
-  }
-  .message.assistant {
+}
+.message.assistant {
     background: var(--assistant-bubble-bg);
     float: left;
     border-bottom-left-radius: 3px;
-  }
+}
   
-  /* Markdown headings inside messages */
-  .message h1,
-  .message h2,
-  .message h3 {
+/* Markdown headings inside messages */
+.message h1,
+.message h2,
+.message h3 {
     margin: 1em 0 0.5em;
     color: var(--primary-color);
     font-weight: 600;
-  }
-  .message h1 { font-size: 1.4em; }
-  .message h2 { font-size: 1.2em; }
-  .message h3 { font-size: 1.1em; }
+}
+.message h1 { font-size: 1.4em; }
+.message h2 { font-size: 1.2em; }
+.message h3 { font-size: 1.1em; }
+
+/* Indentation & spacing for lists inside chat bubbles */
+.message ul,
+.message ol {
+    margin: 0.5em 0;        /* vertical space above/below the list */
+    padding-left: 1.5em;    /* indent the whole list away from the bubble edge */
+    list-style-position: outside;
+}
+
+.message li {
+    margin-bottom: 0.4em;   /* space between items */
+    line-height: 1.4;       /* improves readability */
+}
   
-  /* Code blocks */
-  .message pre {
+/* Code blocks */
+.message pre {
     background: var(--code-bg);
     color: #c7c7c7;
     padding: 12px 15px;
@@ -109,33 +122,33 @@ h1 {
     font-family: 'Courier New', monospace;
     font-size: 0.9em;
     clear: both;
-  }
-  .message pre code {
+}
+.message pre code {
     display: block;
     white-space: pre;
     padding: 0;
     background: none;
     color: inherit;
-  }
-  /* Inline code */
-  .message code:not(pre > code) {
+}
+/* Inline code */
+.message code:not(pre > code) {
     background: var(--code-bg);
     padding: 0.2em 0.4em;
     border-radius: 3px;
     font-family: 'Courier New', monospace;
     font-size: 0.9em;
-  }
+}
   
-  /* Control buttons */
-  #controls {
+/* Control buttons */
+#controls {
     display: flex;
     justify-content: center;
     gap: 10px;
     padding-top: 15px;
     border-top: 1px solid var(--border-color);
     flex-wrap: wrap;
-  }
-  #controls button {
+}
+#controls button {
     padding: 10px 18px;
     background: var(--button-bg);
     color: var(--text-color);
@@ -144,16 +157,15 @@ h1 {
     cursor: pointer;
     font-size: 1em;
     transition: background-color 0.2s ease;
-  }
-  #controls button:hover:not(:disabled) {
+}
+#controls button:hover:not(:disabled) {
     background: var(--button-hover-bg);
-  }
-  #controls button:disabled {
+}
+#controls button:disabled {
     background: var(--button-disabled-bg);
     color: var(--button-disabled-text);
     cursor: not-allowed;
-  }
-  #pause-btn {
+}
+#pause-btn {
     display: none;
-  }
-  
+}
